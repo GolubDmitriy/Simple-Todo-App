@@ -1,0 +1,13 @@
+.add-item-input {
+    width: 257px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.add-item-btn {
+    border: 1px solid black;
+}
+
+.add-item {
+    margin-top: 10px;
+}

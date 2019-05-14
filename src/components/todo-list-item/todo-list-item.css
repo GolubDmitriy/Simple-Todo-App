@@ -1,0 +1,29 @@
+.todo-list-item-label {
+    margin-right: 10px;
+}
+
+.btn-sm {
+    border: 1px solid black;
+    width: 30px;
+    margin-right: 1px;
+}
+
+.btn-important {
+    border-color: green;
+    color: green;
+    margin-left: 10px;
+}
+
+.btn-closed {
+    border-color: red;
+    color: red;
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+.important {
+    color: tomato;
+    font-weight: 550;
+}
