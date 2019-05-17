@@ -1,16 +1,14 @@
 import React from 'react';
 import AppHeader from '../AppHeader/AppHeader';
 import TodoList from '../TodoList/TodoList';
-import AddItem from '../AddItem/AddItem'
+import AddItem from '../AddItem/AddItem';
 import {maxId, todoData} from '../../constants/constants';
 import './app.css';
 
 export default class App extends React.Component{
     maxId = maxId
 
-    state = {
-        todoData: todoData
-    }
+    state = {todoData}
 
     deleteItem = (id) => {
         const todoData = this.state.todoData.filter(el => el.id !== id);
