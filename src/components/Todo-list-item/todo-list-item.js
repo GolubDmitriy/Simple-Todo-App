@@ -10,9 +10,11 @@ class TodoListItem extends React.Component {
                 important, done } = this.props
 
         let classNames = 'todo-list-item';
+
         if (done) {
             classNames += ' done';
         }
+        
         if (important) {
             classNames += ' important'
         }

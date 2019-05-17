@@ -1,19 +1,16 @@
 import React from 'react';
-import AppHeader from '../app-header/app-header';
-import TodoList from '../todo-list/todo-list';
-import AddItem from '../add-item/add-item'
+import AppHeader from '../App-header/app-header';
+import TodoList from '../Todo-list/todo-list';
+import AddItem from '../Add-item/add-item'
+import {maxId, todoData} from '../../constants/constants';
 import './app.css';
 
 export default class App extends React.Component{
 
-    maxId = 100;
+    maxId = maxId
 
     state = {
-        todoData: [
-            {label: 'Выпить колы', important: false, id: 1, done: false},
-            {label: 'Сделать ДЗ', important: true, id: 2, done: false},
-            {label: 'Пообедать', important: false, id: 3, done: false}
-        ]
+        todoData: todoData
     }
 
     deleteItem = (id) => {
