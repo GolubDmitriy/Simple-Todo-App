@@ -30,7 +30,8 @@ export default class AddItem extends React.Component {
                     placeholder="Что нужно сделать"
                     type="text"
                     value={this.state.label} />
-                <button className="btn add-item-btn">
+                <button className="btn add-item-btn"
+                    type="submit">
                     Add    
                 </button>
             </form>

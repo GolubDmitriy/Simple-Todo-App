@@ -25,12 +25,14 @@ class TodoListItem extends React.Component {
                     onClick={ onToggleDone }>
                     { label }
                 </span>
-                <button onClick= { onToggleImportant } 
-                    className="btn btn-sm btn-important">
+                <button className="btn btn-sm btn-important"
+                    onClick= { onToggleImportant }
+                    type="submit">
                     !
                 </button>
-                <button onClick={onDeleted}
-                    className="btn  btn-sm btn-closed">
+                <button className="btn  btn-sm btn-closed"
+                    onClick={ onDeleted }
+                    type="submit">
                     X
                 </button>
             </span>

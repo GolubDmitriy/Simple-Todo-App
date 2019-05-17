@@ -6,7 +6,6 @@ import {maxId, todoData} from '../../constants/constants';
 import './app.css';
 
 export default class App extends React.Component{
-
     maxId = maxId
 
     state = {
@@ -14,15 +13,11 @@ export default class App extends React.Component{
     }
 
     deleteItem = (id) => {
-        this.setState(({ todoData }) => {
-            const idx = todoData.findIndex((el) => el.id === id);
-            const before = todoData.slice(0, idx);
-            const after = todoData.slice(idx + 1);
-            const newArr = [...before, ...after];
-            return {
-                todoData: newArr
-            }
-        })
+        const todoData = this.state.todoData.filter((el) => {
+            return el.id !== id
+        });
+
+        this.setState({todoData});
     }
 
     addItem = (text) => {
@@ -33,40 +28,31 @@ export default class App extends React.Component{
             done: false
         };
 
-        this.setState(({todoData}) => {
-            const newArr = [...todoData, newItem];
-            return {
-                todoData: newArr
-            }
-        })
+        this.setState({
+            todoData: [...this.state.todoData, newItem]
+        });
     }
 
     onToggleImportant = (id) => {
-        this.setState(({todoData}) => {
-            const idx = todoData.findIndex((el) => el.id === id);
-            const oldItem = todoData[idx];
-            const newItem = {...oldItem, important: !oldItem.important};
-            const before = todoData.slice(0, idx);
-            const after = todoData.slice(idx + 1);
-            const newArr = [...before, newItem, ...after];
-            return {
-                todoData: newArr
+        const todoData = this.state.todoData.map((el) => {
+            if (el.id === id ) {
+                el.important = !el.important
             }
+            return el;
         })
+        
+        this.setState({todoData});
     }
 
     onToggleDone = (id) => {
-        this.setState(({todoData}) => {
-            const idx = todoData.findIndex((el) => el.id === id);
-            const oldItem = todoData[idx];
-            const newItem = {...oldItem, done: !oldItem.done};
-            const before = todoData.slice(0, idx);
-            const after = todoData.slice(idx + 1);
-            const newArr = [...before, newItem, ...after];
-            return {
-                todoData: newArr
+        const todoData = this.state.todoData.map((el) => {
+            if (el.id === id ) {
+                el.done = !el.done
             }
+            return el;
         })
+        
+        this.setState({todoData});
     }
 
     render() {
@@ -74,12 +60,12 @@ export default class App extends React.Component{
             <div className="main">
                 <AppHeader />
                 <TodoList 
-                    todos={this.state.todoData} 
+                    todos={ this.state.todoData } 
                     onDeleted={ this.deleteItem }
-                    onToggleImportant={this.onToggleImportant}
-                    onToggleDone={this.onToggleDone}/>
+                    onToggleImportant={ this.onToggleImportant }
+                    onToggleDone={ this.onToggleDone }/>
                 <AddItem addItemClick={ this.addItem }/>
             </div>
-        )
+        );
     }
 }
