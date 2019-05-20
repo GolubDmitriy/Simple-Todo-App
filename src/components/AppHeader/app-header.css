@@ -1,0 +1,8 @@
+.app-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-all-btn {
+    border: 1px solid black;
+}

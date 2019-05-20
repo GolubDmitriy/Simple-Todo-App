@@ -12,8 +12,13 @@ export default class App extends React.Component{
 
     deleteItem = (id) => {
         const todoData = this.state.todoData.filter(el => el.id !== id);
-
         this.setState({todoData});
+    }
+
+    deleteAll = () => {
+        this.setState({
+            todoData: []
+        });
     }
 
     addItem = (text) => {
@@ -54,7 +59,7 @@ export default class App extends React.Component{
     render() {
         return (
             <div className="main">
-                <AppHeader />
+                <AppHeader deleteAll={ this.deleteAll } />
                 <TodoList 
                     todos={ this.state.todoData } 
                     onDeleted={ this.deleteItem }
