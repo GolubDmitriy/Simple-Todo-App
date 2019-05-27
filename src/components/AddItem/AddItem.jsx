@@ -1,7 +1,8 @@
 import React from 'react';
-import './add-item.css';
+import './AddItem.css';
+import { connect } from 'react-redux';
 
-export default class AddItem extends React.Component {
+class AddItem extends React.Component {
 
     state = {
         label: ''
@@ -15,7 +16,7 @@ export default class AddItem extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.addItemClick(this.state.label);
+        this.props.dispatch({type: 'ADD', text: this.state.label});
         this.setState({
             label: ''
         })
@@ -39,3 +40,6 @@ export default class AddItem extends React.Component {
     }
 }
 
+const WrappedAddItem = connect()(AddItem)
+
+export default WrappedAddItem

@@ -19,6 +19,12 @@
     color: red;
 }
 
+.btn-done {
+    border: 1px solid black;
+    margin-right: 1px;
+    width: 69px;
+}
+
 .done {
     text-decoration: line-through;
 }

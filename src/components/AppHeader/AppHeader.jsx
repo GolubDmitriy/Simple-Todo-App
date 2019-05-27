@@ -1,12 +1,13 @@
 import React from 'react';
-import './app-header.css';
+import './AppHeader.css';
+import { connect } from 'react-redux';
 
-const AppHeader = (props) => {
+const AppHeader = ({dispatch}) => {
   return (
     <div className="app-header">
       <h1>My Todo List</h1>
       <button className="btn delete-all-btn"
-              onClick= { props.deleteAll }
+              onClick= { () => dispatch({type: 'DELETE_ALL'}) }
               type="submit">
         Clear All
       </button>
@@ -14,4 +15,6 @@ const AppHeader = (props) => {
   );
 };
 
-export default AppHeader;
+const WrappedAppHeader = connect()(AppHeader)
+
+export default WrappedAppHeader;

@@ -1,24 +1,29 @@
 import React from 'react';
 import TodoListItem from '../TodoListItem/TodoListItem';
-import './todo-list.css';
+import { connect } from 'react-redux';
+import './TodoList.css';
 
-const TodoList = ( { todos, onDeleted,
-                    onToggleImportant,
-                    onToggleDone } ) => {
+const TodoList = ( { todoData, dispatch } ) => {
     
-    const elements = todos.map((element) => {
+    const elements = todoData.map((element) => {
 
-        const { id, ...elementProps } = element;
+        if (element.visible) {
 
-        return (
-            <li key={ id } className="list-group-item">
-                <TodoListItem 
-                { ...elementProps } 
-                onDeleted={ () => onDeleted(id) }
-                onToggleDone={ () => onToggleDone(id) }
-                onToggleImportant={ () => onToggleImportant(id) }/>
-            </li>
-        );
+            const { id } = element;
+
+            return (
+                <li key={ id } className="list-group-item">
+                    <TodoListItem 
+                    { ...element } 
+                    onDeleted={ () => dispatch({type: 'DELETE', id}) }
+                    onToggleDone={ () => dispatch({type: 'TOOGLE_DONE', id}) }
+                    onToggleImportant={ () => dispatch({type: 'TOOGLE_IMPORTANT', id}) }/>
+                </li>
+            );
+        }
+
+        return null
+
     });
 
     return (
@@ -28,4 +33,10 @@ const TodoList = ( { todos, onDeleted,
     );
 };
 
-export default TodoList;
+const mapToState = (state) => {
+    return {todoData: state};
+}
+
+const WrappedTodoList = connect(mapToState)(TodoList)
+
+export default WrappedTodoList;
